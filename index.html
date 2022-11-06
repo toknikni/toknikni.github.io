@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to wkni</title>
+    <link rel="stylesheet" href="./js/katex.min.css">
+
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+    <style>
+        @font-face {
+            font-family: 'Happy';
+            src: url(./fonts/happy.ttf);
+        }
+
+        @font-face {
+            font-family: "iconfont";
+            /* Project id 3636949 */
+            src: url('//at.alicdn.com/t/c/font_3636949_wus99j98y4.woff2?t=1662562636065') format('woff2'),
+                url('//at.alicdn.com/t/c/font_3636949_wus99j98y4.woff?t=1662562636065') format('woff'),
+                url('//at.alicdn.com/t/c/font_3636949_wus99j98y4.ttf?t=1662562636065') format('truetype');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-heart {
+            color: #e74c3c;
+        }
+
+        .icon-heart:before {
+            content: "\e815";
+        }
+
+        html,
+        body {
+            background-color: #262334;
+            margin: 0;
+            padding: 0;
+            font-size: 24px;
+            font-family: 'Happy', sans-serif;
+            color: #fff;
+        }
+
+        #header {
+            width: 100%;
+            height: 50px;
+            font-size: 24px;
+        }
+
+        #header .logo {
+            padding: 10px;
+            text-align: center;
+            text-shadow: 0px 0px 10px #3498db;
+        }
+
+        #count-love-time {
+            display: flex;
+            justify-content: center;
+            text-shadow: 0px 0px 10px #22a6b3;
+        }
+
+        #type-writer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-shadow: 0px 0px 10px #22a6b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="logo">
+            <i class="iconfont icon-heart"></i>
+            <span>to Wkni</span>
+        </div>
+    </div>
+
+    <div id="count-love-time"></div>
+
+    <div id="type-writer">
+        <p>我想告诉你, 参数h跟时间的增长成正比</p>
+        <p>而我的心意，就如同参数h</p>
+        <p id="love-formula">
+            $$f(x)=x^{2/3} + 0.9 sin(h \pi x) \sqrt{3.3 - x^2 }$$
+        </p>
+    </div>
+
+    <!-- <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          }
+        });
+
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none"
+          });
+      </script> -->
+
+    <script src=" ./js//jquery.js"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            showProcessingMessages: false,
+            messageStyle: "none",
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath:  [ ["$", "$"] ],
+                displayMath: [ ["$$","$$"] ],
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+                ignoreClass:"comment-content"
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX","TeX"],
+                showMathMenu: false
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        </script>
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        function count_love_time() {
+            let container = $('#count-love-time');
+            let start_s = new Date('2022/08/21 18:33:15');
+            let current_s = Date.now();
+            let total_micro_seconds = current_s - start_s;
+            let micro_seconds_per_day = 1000 * 3600 * 24;
+
+            // 总秒数
+            let total_seconds = Math.floor(total_micro_seconds / 1000);
+
+            // 总分钟数
+            let total_minutes = Math.floor(total_seconds / 60);
+            // 余秒数
+            let mod_seconds = total_seconds % 60;
+
+            // 总小时数
+            let total_hours = Math.floor(total_minutes / 60);
+            // 余分钟数
+            let mod_minutes = total_minutes % 60;
+
+            // 总天数
+            let total_days = Math.floor(total_hours / 24);
+            // 余小时数
+            let mod_hours = total_hours % 24;
+
+            let show_count = `我们相识了 ${total_days} 天 ${mod_hours} 小时 ${mod_minutes} 分钟 ${mod_seconds} 秒`;
+
+            container.html(`<span>${show_count}</span>`);
+        }
+        c_id = setInterval(count_love_time, 1000);
+
+    </script>
+</body>
+
+</html>
