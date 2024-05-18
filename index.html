@@ -95,6 +95,8 @@
         </div>
     </div>
 
+    <div id="show-520"></div>
+
     <div id="count-love-time"></div>
 
     <div id="type-writer">
@@ -176,6 +178,19 @@
 
             container.html(`<span>${show_count}</span>`);
         }
+
+        function show_520(){
+            let show_520_contaniner = $('#show-520');
+            const current = new Date();
+            month = current.getMonth();
+            day = current.getDate()
+            if (month == 5 && day == 20){
+                show_520_container.html(`宝贝妮, 520快乐哟, 我爱你!!!`)
+            }
+        }
+
+        s_id = setInterval(show_520, 1000)
+        
         c_id = setInterval(count_love_time, 1000);
 
     </script>
